@@ -30,10 +30,10 @@ def __init__(self, **kwargs):
                     self.returncode = "Notitlefound"
                 else:
                     self.title = search_results_title[0]
-    self.message = {
-        "title": self.title,
-        "returncode": self.returncode
-    }
+        self.message = {
+            "title": self.title,
+            "returncode": self.returncode
+        }
     self.say(self.message)
 
 def _is_parameters_ok(self):
