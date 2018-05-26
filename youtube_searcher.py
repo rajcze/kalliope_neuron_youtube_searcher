@@ -1,6 +1,6 @@
 import urllib
 import re
-
+from kalliope.core.NeuronModule import NeuronModule, InvalidParameterException
 class Youtube_searcher(NeuronModule):
     def __init__(self, **kwargs):
         cache = kwargs.get('cache', None)
