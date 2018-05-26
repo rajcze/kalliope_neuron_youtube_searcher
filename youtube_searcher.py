@@ -21,7 +21,7 @@ class Youtube_searcher(NeuronModule):
                 self.returncode = "Nochannelfound"
             else:
                 self.search_results_url = urllib.urlopen("https://www.youtube.com/" + self.search_results[0] + "/videos")
-                self.video_url = re.findall(r'<a href=\"/watch\?v=(.{11})', self.video_url.read())
+                self.video_url = re.findall(r'<a href=\"/watch\?v=(.{11})', self.search_results_url.read())
                 if len(self.video_url) == 0:
                     self.returncode = "Novideofound"
                 else:
