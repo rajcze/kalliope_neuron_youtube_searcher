@@ -12,6 +12,7 @@ def __init__(self, **kwargs):
     # the args from the neuron configuration
     self.channel = kwargs.get('channel', None)
     self.title = "None"
+    self.returncode = "None"
     # check if parameters have been provided
     if self._is_parameters_ok():
         self.html_content = urllib.urlopen("https://www.youtube.com/results?sp=EgIQAg%253D%253D&search_query=" + self.channel)
@@ -29,6 +30,11 @@ def __init__(self, **kwargs):
                     self.returncode = "Notitlefound"
                 else:
                     self.title = search_results_title[0]
+    self.message = {
+        "title": self.title,
+        "returncode": self.returncode
+    }
+    self.say(self.message)
 
 def _is_parameters_ok(self):
     """

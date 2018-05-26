@@ -34,7 +34,7 @@ Description of what the synapse will do
      - order: "What's the latest video by {{ channel }}"
    neurons:      
      - youtube_searcher:
-        channel: {{ channel }}
+        channel: "{{ channel }}"
         file_template: youtube_searcher.j2
     
 ```
