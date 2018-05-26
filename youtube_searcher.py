@@ -20,7 +20,7 @@ class Youtube_searcher(NeuronModule):
             if len(self.search_results) == 0:
                 self.returncode = "Nochannelfound"
             else:
-                self.video_url = re.findall(r'<a href=\"/watch\?v=(.{11})', "https://www.youtube.com/" + search_results[0] + "/videos")
+                self.video_url = re.findall(r'<a href=\"/watch\?v=(.{11})', "https://www.youtube.com/" + self.search_results[0] + "/videos")
                 if len(self.video_url) == 0:
                     self.returncode = "Novideofound"
                 else:
@@ -28,7 +28,7 @@ class Youtube_searcher(NeuronModule):
                     if len(self.search_results_title) == 0:
                         self.returncode = "Notitlefound"
                     else:
-                        self.title = search_results_title[0]
+                        self.title = self.search_results_title[0]
         self.message = {
             "title": self.title,
             "returncode": self.returncode
