@@ -6,7 +6,7 @@ This neuron gives you a latest video title from channel you ask for
 
 ## Installation
 ```bash
-kalliope install --git-url https://github.com/kouzelnikCZ/youtube_searcher.git
+kalliope install --git-url https://github.com/kalliope_neuron_youtube_searcher.git
 ```
 
 ## Options
