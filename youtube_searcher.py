@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import urllib
 import re
 from kalliope.core.NeuronModule import NeuronModule, InvalidParameterException
@@ -15,13 +16,13 @@ class Youtube_searcher(NeuronModule):
         self.returncode = "None"
         # check if parameters have been provided
         if self._is_parameters_ok():
-            self.html_content = urllib.urlopen("https://www.youtube.com/results?sp=EgIQAg%253D%253D&search_query=" + self.channel)
+            self.html_content = urllib.urlopen("https://www.youtube.com/results?search_query=" + self.channel)
             self.html_R = self.html_content.read()
             self.search_results = re.findall(r'href=\"/(.*?)\" class=\" yt-uix-sessionlink', self.html_R)
             if len(self.search_results) == 0:
                 self.returncode = "Nochannelfound"
             else:
-                self.search_results_url = urllib.urlopen("https://www.youtube.com/" + self.search_results[0] + "/videos")
+                self.search_results_url = urllib.urlopen("https://www.youtube.com/" + self.search_results[0] + "/feed?activity_view=3")
                 self.video_url = re.findall(r'<a href=\"/watch\?v=(.{11})', self.search_results_url.read())
                 if len(self.video_url) == 0:
                     self.returncode = "Novideofound"
@@ -31,7 +32,7 @@ class Youtube_searcher(NeuronModule):
                     if len(self.search_results_title) == 0:
                         self.returncode = "Notitlefound"
                     else:
-                        self.title = self.search_results_title[0]
+                        self.title = self.search_results_title[0].encode("utf-8")
         self.message = {
             "title": self.title,
             "returncode": self.returncode
