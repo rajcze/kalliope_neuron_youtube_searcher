@@ -35,7 +35,7 @@ Description of what the synapse will do
    neurons:      
      - youtube_searcher:
         channel: "{{ channel }}"
-        file_template: youtube_searcher.j2
+        file_template: templates/youtube_searcher.j2
     
 ```
 
